@@ -9,10 +9,17 @@ export default function Signup() {
   const [password, setPassword] = useState('');
   const {error, signup} = useSignup()
 
+  const resetForm = () => {
+    setEmail('')
+    setPassword('')
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     signup(email, password)
+
+    resetForm()
   };
 
   return (
