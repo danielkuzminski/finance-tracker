@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSignup } from '../../hooks/useSignup';
 
 //styles
 import './Signup.css';
@@ -6,12 +7,12 @@ import './Signup.css';
 export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [password2, setPassword2] = useState('')
+  const {error, signup} = useSignup()
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(email, password);
+    signup(email, password)
   };
 
   return (
@@ -25,6 +26,7 @@ export default function Signup() {
             setEmail(e.target.value);
           }}
           value={email}
+          required
         />
       </label>
       <label>
@@ -35,16 +37,7 @@ export default function Signup() {
             setPassword(e.target.value);
           }}
           value={password}
-        />
-      </label>
-      <label>
-        <span>repeat your password:</span>
-        <input
-          type='password'
-          onChange={(e) => {
-            setPassword2(e.target.value);
-          }}
-          value={password2}
+          required
         />
       </label>
       <button className='submit-btn'>submit</button>
