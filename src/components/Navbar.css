@@ -14,6 +14,7 @@
 
 .navbar ul li {
   list-style: none;
+  cursor: pointer;
 }
 
 .title {
@@ -23,7 +24,7 @@
   font-size: 1.2em;
 }
 
-.navbar button, .navbar a {
+.navbar button, .navbar li {
   margin-left: 16px;
 }
 

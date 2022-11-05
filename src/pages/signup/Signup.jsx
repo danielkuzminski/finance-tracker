@@ -7,17 +7,19 @@ import './Signup.css';
 export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [displayName, setDisplayName] = useState('')
   const {error, signup} = useSignup()
 
   const resetForm = () => {
     setEmail('')
     setPassword('')
+    setDisplayName('')
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    signup(email, password)
+    signup(email, password, displayName)
 
     resetForm()
   };
@@ -34,6 +36,7 @@ export default function Signup() {
           }}
           value={email}
           required
+          placeholder='your email'
         />
       </label>
       <label>
@@ -45,7 +48,20 @@ export default function Signup() {
           }}
           value={password}
           required
+          placeholder='create password'
         />
+      </label>
+      <label>
+        <span>user name</span>
+        <input 
+          type="text"
+          onChange={(e) => {
+            setDisplayName(e.target.value)
+          }}
+          value={displayName}
+          required
+          placeholder='set user name'
+           />
       </label>
       <button className='submit-btn'>submit</button>
     </form>
